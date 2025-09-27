@@ -1,0 +1,17 @@
+{
+  "name": "netlify-ai-app",
+  "version": "1.0.0",
+  "description": "App con funciones Netlify usando Google Generative AI",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'No build step required'",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
