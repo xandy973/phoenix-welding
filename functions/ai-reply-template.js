@@ -1,55 +1,51 @@
-// functions/ai-reply-template.js
 import fetch from "node-fetch";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export async function handler(event, context) {
   try {
-    // Verificar método
-    if (event.httpMethod !== "POST") {
+    const { prompt } = JSON.parse(event.body || "{}");
+
+    if (!prompt) {
       return {
-        statusCode: 405,
-        body: JSON.stringify({ error: "Método no permitido, usa POST." }),
+        statusCode: 400,
+        body: JSON.stringify({ error: "Falta el campo 'prompt'" }),
       };
     }
 
-    // Parsear body enviado desde el frontend
-    const body = JSON.parse(event.body || "{}");
-    const userMessage = body.message || "Hola, dame una respuesta de prueba";
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }]
+      }),
+    });
 
-    // Llamada a Gemini API
-    const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
-        process.env.GEMINI_API_KEY,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text: userMessage }],
-            },
-          ],
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Error en Gemini API: ${response.statusText}`);
+    if (!res.ok) {
+      const errText = await res.text();
+      return {
+        statusCode: res.status,
+        body: JSON.stringify({ error: errText }),
+      };
     }
 
-    const data = await response.json();
-    const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sin respuesta";
+    const data = await res.json();
+    const message = data.choices?.[0]?.message?.content || "Sin respuesta";
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply: aiReply }),
+      body: JSON.stringify({ reply: message }),
     };
-  } catch (error) {
-    console.error("Error en función:", error);
+
+  } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: err.message }),
     };
   }
 }

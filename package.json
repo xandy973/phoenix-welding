@@ -2,14 +2,18 @@
   "name": "netlify-ai-app",
   "version": "1.0.0",
   "description": "App con funciones Netlify usando Google Generative AI",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "netlify dev",
+    "start": "node test-gemini-direct.js",
+    "dev": "netlify dev",
     "build": "echo 'No build step required'",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.3.0"
+    "@google/generative-ai": "^0.3.0",
+    "dotenv": "^17.2.2",
+    "node-fetch": "^3.3.2"
   },
   "engines": {
     "node": ">=18"
