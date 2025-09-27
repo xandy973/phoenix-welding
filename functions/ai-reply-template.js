@@ -1,32 +1,55 @@
-// Template serverless function (Node) to proxy AI requests (e.g., OpenAI)
-// Do NOT commit real API keys. Set API key in environment variable (e.g., AI_API_KEY) in your hosting provider.
+// functions/ai-reply-template.js
+import fetch from "node-fetch";
 
-// Example for Netlify functions (AWS Lambda-like):
-// Save as functions/ai_reply.js and deploy to Netlify, then set NETLIFY env var AI_API_KEY in site settings.
+export async function handler(event, context) {
+  try {
+    // Verificar método
+    if (event.httpMethod !== "POST") {
+      return {
+        statusCode: 405,
+        body: JSON.stringify({ error: "Método no permitido, usa POST." }),
+      };
+    }
 
-const fetch = require('node-fetch'); // include in package if needed
+    // Parsear body enviado desde el frontend
+    const body = JSON.parse(event.body || "{}");
+    const userMessage = body.message || "Hola, dame una respuesta de prueba";
 
-exports.handler = async function(event, context){
-  try{
-    const body = JSON.parse(event.body || '{}');
-    const prompt = body.prompt || '';
-    if(!prompt) return { statusCode: 400, body: JSON.stringify({ error: 'No prompt' }) };
+    // Llamada a Gemini API
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
+        process.env.GEMINI_API_KEY,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: userMessage }],
+            },
+          ],
+        }),
+      }
+    );
 
-    const API_KEY = process.env.AI_API_KEY; // set this securely in hosting env
-    if(!API_KEY) return { statusCode: 500, body: JSON.stringify({ error: 'AI API key not configured' }) };
+    if (!response.ok) {
+      throw new Error(`Error en Gemini API: ${response.statusText}`);
+    }
 
-    // Example OpenAI call (pseudo): adapt per provider and SDK
-    const resp = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_KEY },
-      body: JSON.stringify({ prompt: prompt, max_tokens: 150, temperature: 0.6 })
-    });
-    const data = await resp.json();
-    // Extract text depending on provider response shape
-    var reply = data && data.choices && data.choices[0] && data.choices[0].text ? data.choices[0].text.trim() : (data && data.reply) || '';
+    const data = await response.json();
+    const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sin respuesta";
 
-    return { statusCode: 200, body: JSON.stringify({ reply: reply }) };
-  }catch(err){
-    return { statusCode: 500, body: JSON.stringify({ error: String(err) }) };
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ reply: aiReply }),
+    };
+  } catch (error) {
+    console.error("Error en función:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
   }
-};
+}
