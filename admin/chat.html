@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Chat - Phoenix Welding</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { background: #07071a; color: #fff; padding: 2rem; font-family: sans-serif }
+  .panel { max-width: 900px; margin: 0 auto; background: rgba(20,20,40,0.8); padding: 1rem 1.5rem; border-radius: 8px; }
+  .controls { display:flex; gap: .5rem; margin-bottom: .75rem; }
+  .messages { list-style:none; max-height: 60vh; overflow:auto; padding: .5rem; }
+  .messages li { margin-bottom: .5rem }
+  .meta { color: #bfc7ff; font-size: .85rem }
+  .btn { background:#FF7B00; border:none; padding:.5rem .75rem; color:#fff; border-radius:6px; cursor:pointer }
+  .btn.secondary { background:#3b3f64 }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Visor de Chats (Admin)</h1>
+    <div class="controls">
+      <button id="reload" class="btn">Recargar</button>
+      <button id="download" class="btn secondary">Descargar JSON</button>
+      <button id="clear" class="btn secondary">Limpiar historial</button>
+      <span style="margin-left:auto; color:#ffd7b3">Nota: Esta vista usa localStorage si no existe almacenamiento del servidor.</span>
+    </div>
+    <ul id="messages" class="messages"></ul>
+  </div>
+<script>
+(function(){
+  var STORAGE_KEY = 'phoenix_chat_messages_v1';
+  function load(){ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+  function render(){
+    var el = document.getElementById('messages'); el.innerHTML = '';
+    var arr = load();
+    arr.forEach(function(m){
+      var li = document.createElement('li');
+      var cls = m.role==='user'? 'from-user' : 'from-bot';
+      li.innerHTML = '<div><strong class="meta">'+(m.role==='user'? 'Usuario' : 'Asistente')+'</strong> <small class="meta">'+(new Date(m.ts)).toLocaleString()+'</small><div>' + escapeHtml(m.text) + '</div></div>';
+      el.appendChild(li);
+    });
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>\"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  document.getElementById('reload').addEventListener('click', render);
+  document.getElementById('download').addEventListener('click', function(){
+    var data = JSON.stringify(load(), null, 2);
+    var blob = new Blob([data], {type:'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'chats.json'; document.body.appendChild(a); a.click(); a.remove();
+  });
+  document.getElementById('clear').addEventListener('click', function(){ if(confirm('Limpiar historial de chats?')){ localStorage.removeItem(STORAGE_KEY); render(); }});
+  render();
+})();
+</script>
+</body>
+</html>

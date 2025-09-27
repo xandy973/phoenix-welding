@@ -1,0 +1,19 @@
+# Protege el panel de administración con autenticación HTTP básica
+# 1) Genera un archivo .htpasswd (ver ../scripts/generate_htpasswd.sh)
+# 2) Reemplaza la ruta en AuthUserFile por la ruta absoluta a tu .htpasswd
+
+AuthType Basic
+AuthName "Área restringida - Phoenix Welding"
+# Cambia la siguiente ruta por la ruta absoluta a .htpasswd en tu servidor
+AuthUserFile /path/to/site/esta es negro1/admin/.htpasswd
+Require valid-user
+
+# Evita el acceso público al archivo de configuración del CMS
+<Files "config.yml">
+  Require all denied
+</Files>
+
+# Opcional: protege también cualquier archivo sensible
+<FilesMatch "\.(yml|yaml|env|ini|sh)$">
+  Require all denied
+</FilesMatch>

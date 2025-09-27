@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Phoenix Welding</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <header role="banner">
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="side-nav" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <div class="logo">
+            <a href="../../index.html" aria-label="Ir a la página de inicio">
+                <img src="../../imagenes/logofenix.png" alt="Logo de Phoenix Welding" width="150" height="60">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" aria-labelledby="hero-title">
+            <h1 id="hero-title">Inicio</h1>
+            <p>Bienvenido a Phoenix Welding. Usa el menú para navegar por Inicio, Galería, Contacto y Servicios.</p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Phoenix Welding</p>
+    </footer>
+
+    <!-- Side nav overlay and panel -->
+    <div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
+    <nav class="side-nav" id="side-nav" aria-hidden="true">
+        <h2 style="color:#FF7B00;">Menú</h2>
+        <div class="side-tabs" role="tablist" aria-orientation="vertical">
+            <a href="../../index.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Inicio</a>
+            <a href="../galeria.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Galería</a>
+            <a href="../contacto.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Contacto</a>
+            <a href="../servicios.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Servicios</a>
+        </div>
+        <hr style="border-color: rgba(255,255,255,0.06); margin: 1rem 0;">
+        <div class="side-chat" id="side-chat-10">
+            <h3>Chat rápido</h3>
+            <ul class="messages" id="messages-10"></ul>
+            <form class="chat-form" data-formspree="https://formspree.io/f/meorjbgk">
+                <input type="text" name="message" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <a href="#" onclick="document.getElementById('side-nav').classList.remove('open');document.getElementById('side-overlay').classList.remove('open');return false;">Cerrar</a>
+    </nav>
+
+    <script src="../../scripts/side_chat.js"></script>
+    <script src="../../scripts/side_nav_accessibility.js"></script>
+    <script src="../../scripts/side_nav_toggle.js"></script>
+
+</body>
+</html>

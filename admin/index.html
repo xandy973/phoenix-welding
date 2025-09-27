@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phoenix Welding - Panel de Administración</title>
+  <!-- Seguridad: Content Security Policy básico. Ajustar según recursos reales. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https://unpkg.com 'unsafe-inline'; connect-src 'self' https://api.netlify.com https://formspree.io; img-src 'self' data: https:; style-src 'self' 'unsafe-inline';">
+  <!-- No index para buscadores -->
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+  <!-- Carga Decap CMS (versión moderna y mantenida de Netlify CMS) -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Aviso en consola para detectar si el panel no se sirve por HTTPS
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+      console.warn('Aviso de seguridad: el panel de administración no se está sirviendo por HTTPS. Esto expone credenciales.');
+    }
+  </script>
+</body>
+</html>

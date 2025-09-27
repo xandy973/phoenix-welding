@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Soldadura de Calidad - Phoenix Welding</title>
+    <meta name="description" content="Phoenix Welding: expertos en soldadura TIG, MIG y por electrodo para industria y particulares. +10 años de experiencia, trabajos garantizados.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Seguridad básica (nota: X-Frame-Options debe establecerse por cabecera HTTP en el servidor) -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+</head>
+<body>
+
+    <header role="banner">
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="side-nav" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <div class="logo">
+            <a href="index.html" aria-label="Ir a la página de inicio">
+                <img src="imagenes/logofenix.png" alt="Logo de Phoenix Welding" width="150" height="60">
+            </a>
+        </div>
+        <!-- navegación principal movida a la barra lateral -->
+    </header>
+
+    <main>
+        <section class="hero-section" aria-labelledby="hero-title">
+  <h1 id="hero-title">Expertos en Soldadura para la Industria y el Hogar</h1>
+  <p>Con más de 10 años de experiencia, ofrecemos soldadura de alta precisión, garantizando durabilidad y seguridad en cada proyecto.</p>
+  <a href="contacto.html" class="cta-button" role="button">Solicita tu Presupuesto Ahora</a>
+</section>
+
+<style>
+  /* Solo aplicamos stroke al h1 */
+  #hero-title {
+    color: #ffffff; /* color de texto principal */
+    -webkit-text-stroke: 2px #000000; /* stroke negro */
+    font-weight: bold;
+  }
+</style>
+
+
+        <section class="services-preview" aria-labelledby="services-title">
+    <h2 id="services-title">Nuestros Servicios Principales</h2>
+
+    <div class="service-card">
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+             <p> <img src="imagenes/icon-industrial.png" alt="Ícono de soldadura industrial" width="60" height="60" style="border-radius: 8px; flex-shrink: 0; margin-top: 5px;"> </p>
+            <div>
+                <h3>Soldadura Industrial</h3>
+                <h2>Fabricación de estructuras metálicas, tuberías y mantenimiento para empresas.</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+            <p> <img src="imagenes/icon-particular.png" alt="Ícono de servicio a particulares" width="60" height="60" style="border-radius: 8px; flex-shrink: 0; margin-top: 5px;"> </p>
+            <div>
+                <h3>Servicios a Particulares</h3>
+                <h2>Reparaciones de portones, rejas y fabricación de proyectos a medida.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <!-- Al final del body, antes del footer -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <a href="https://wa.me/5402995054125" target="_blank">
+        <img src="imagenes/whatsapp.jpg" alt="WhatsApp" width="90" style="border-radius: 80%;">
+    </a>
+</div>
+
+
+        <section class="gallery-preview" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Proyectos Recientes</h2>
+            <div class="gallery-grid">
+                <img src="imagenes/proyecto1.jpg" alt="Proyecto de estructura metálica terminado" width="300" height="225">
+                <img src="imagenes/proyecto2.jpg" alt="Soldadura en taller industrial" width="300" height="225">
+                <img src="imagenes/proyecto3.jpg" alt="Instalación de reja soldada personalizada" width="300" height="225">
+            </div>
+            <a href="galeria.html" class="cta-button" role="button">Ver Galería Completa</a>
+        </section>
+    </main>
+
+ 
+
+
+   <footer role="contentinfo">
+        <p>&copy; 2025 Phoenix Welding. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Visita nuestro Facebook">Facebook</a>
+            <a href="#" aria-label="Contáctanos por WhatsApp">WhatsApp</a>
+        </div>
+    </footer>
+
+<!-- Side nav overlay and panel -->
+<div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
+<nav class="side-nav" id="side-nav" aria-hidden="true">
+    <h2 style="color:#FF7B00;">Menú</h2>
+    <div class="side-tabs" role="tablist" aria-orientation="vertical">
+        <a href="index.html" class="side-tab" role="tab" aria-selected="true" tabindex="0">Inicio</a>
+        <a href="galeria.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Galería</a>
+        <a href="contacto.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Contacto</a>
+        <a href="servicios.html" class="side-tab" role="tab" aria-selected="false" tabindex="0">Servicios</a>
+    </div>
+    <hr style="border-color: rgba(255,255,255,0.06); margin: 1rem 0;">
+    <!-- Chat widget -->
+    <div class="side-chat" id="side-chat-1">
+        <h3>Chat rápido</h3>
+        <ul class="messages" id="messages-1"></ul>
+        <form class="chat-form" data-formspree="https://formspree.io/f/meorjbgk">
+            <input type="text" name="message" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <a href="#" onclick="document.getElementById('side-nav').classList.remove('open');document.getElementById('side-overlay').classList.remove('open');return false;">Cerrar</a>
+ </nav>
+
+<script src="scripts/side_chat.js"></script>
+<script src="scripts/side_nav_accessibility.js"></script>
+<script src="scripts/side_nav_toggle.js"></script>
+
+</body>
+</html>
