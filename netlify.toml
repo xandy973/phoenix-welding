@@ -1,12 +1,16 @@
 # netlify.toml
 
+# Configuración de build para funciones Netlify
 [build]
   functions = "functions"
   command = "npm run build"
+  # No hay carpeta 'publish' porque este proyecto solo tiene funciones
 
+# Variables de entorno para el build
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirecciones de API a funciones Netlify
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"

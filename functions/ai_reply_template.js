@@ -4,6 +4,17 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function handler(event, context) {
+  console.log("✅ ai_reply_template llamada");
+  console.log("📨 Método HTTP:", event.httpMethod);
+  console.log("📨 Body recibido:", event.body);
+
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: "Método no permitido. Usa POST." }),
+    };
+  }
+
   try {
     const { prompt } = JSON.parse(event.body || "{}");
 
@@ -43,6 +54,7 @@ export async function handler(event, context) {
     };
 
   } catch (err) {
+    console.error("❌ Error interno:", err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.message }),
