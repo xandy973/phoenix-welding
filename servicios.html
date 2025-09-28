@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Detallados - Phoenix Welding</title>
-    
+    <title>Servicios - Phoenix Welding</title>
+    <meta name="description" content="Phoenix Welding ofrece servicios de soldadura metalúrgica a particulares en Neuquén: rejas, portones, estructuras para parrillas, muebles metálicos y más. Trabajos a medida, resistentes y con acabado profesional.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .services-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            color: white;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .services-header h1 {
+            color: #FF7B00;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .services-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight {
+            color: #FF7B00;
+            font-weight: bold;
+        }
+
+        /* Galería de ejemplos */
+        .examples-header {
+            text-align: center;
+            margin: 2.5rem 0 1.5rem;
+            color: #FF7B00;
+            font-size: 1.6rem;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item figcaption {
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #f0f0f0;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .services-container {
+                padding: 0 1rem;
+            }
+            .services-content {
+                padding: 1.5rem;
+            }
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,26 +110,134 @@
                 <img src="imagenes/logofenix.png" alt="Logo de Phoenix Welding" width="150" height="60">
             </a>
         </div>
-        <!-- navegación principal movida a la barra lateral -->
     </header>
-    <script src="scripts/side_chat.js"></script>
-    <script src="scripts/side_nav_accessibility.js"></script>
-<!-- <section class="testimonials" style="margin: 4rem 0; text-align: center;"> --!>
-   <!-- <h2>Lo que dicen nuestros clientes</h2>--!>
-  <!--  <div style="background: rgba(30,30,60,0.6); padding: 2rem; border-radius: 12px; margin: 2rem auto; max-width: 800px;"> --!>
-    <!--    <p>“Excelente trabajo en la reparación de mi portón. ¡Quedó como nuevo y muy seguro!”</p> --!>
-        <!-- <p><strong>— Seryi Emanuel., Cliente Particular</strong></p> --!>
-   <!--<img src="imagenes/" width="50" height="80" loading="lazy"--!>
-   </div>
-</section>
 
+    <main>
+        <div class="services-container">
+            <div class="services-header">
+               <h1>Nuestros Servicios a Particulares</h1> 
+            </div>
 
+            <div class="services-content">
+                <p>
+                    En <span class="highlight">Phoenix Welding</span>, ponemos nuestra experiencia metalúrgica al servicio de tu hogar, taller o emprendimiento. 
+                    
+                </p>
 
+                <p>
+                    <strong>¿Qué ofrecemos?</strong>
+                </p>
 
-	  <div style="text-align: center; margin-top: 3rem;">
-            <a href="contacto.html" class="cta-button" role="button">¿Necesitas un servicio personalizado? Contáctanos</a>
+                <ul>
+                    <li>✅ Fabricación e instalación de <strong>rejas y barandas</strong> para ventanas, balcones y escaleras.</li>
+                    <li>✅ Construcción de <strong>portones y portones corredizos</strong> para casas, cocheras y locales.</li>
+                    <li>✅ Estructuras metálicas para <strong>parrillas, quinchos y áreas exteriores</strong>.</li>
+                    <li>✅ Reparación y refuerzo de <strong>estructuras metálicas dañadas</strong> (techos, marquesinas, etc.).</li>
+                   
+                   <li>✅ Trabajos personalizados: si lo soñaste en metal, ¡lo hacemos realidad!</li>
+                </ul>
+
+                <p>
+                    Todos nuestros trabajos incluyen:
+                    <br>
+                    🔹 <strong>Visita y Medicion Previa</strong> (sin cargo en Neuquén capital)<br>
+                    🔹 <strong>Materiales de primera calidad</strong><br>
+                    🔹 <strong>Acabado impecable</strong> (pintura, lijado, protección anticorrosiva)<br>
+                   
+                </p>
+
+                <p>
+                    ¡Transformá tus ideas en estructuras reales con la precisión y resistencia que solo la soldadura profesional puede ofrecer!
+                </p>
+            </div>
+
+            <h3 class="examples-header">Algunos de nuestros trabajos</h3>
+            <div class="examples-grid">
+                <!-- Reemplaza estas imágenes con tus fotos reales -->
+                <figure class="gallery-item">
+                    <img src="imagenes/servicios/estructuraP.jpg" alt="Reja de seguridad soldada a medida" loading="lazy">
+                    <figcaption>Reja de seguridad soldada a medida Trabajo Particular</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imagenes/servicios/Esqueleto.jpg" alt="Esqueleto Para Gabinete Para Bomba De Agua" loading="lazy">
+                    <figcaption>Esqueleto Para Gabinete Para Bomba De Agua Trabajo Particular</figcaption>
+                </figure>
+
+                
+                <figure class="gallery-item">
+                    <img src="imagenes/servicios/Chispero.jpg" alt="Chispero para Chimenea Fabricado Con Chapa Calada" loading="lazy">
+                    <figcaption>Chispero para Chimenea Fabricado Con Chapa Calada Trabajo Particular</figcaption>
+                </figure>
+
+               <!-- <figure class="gallery-item">
+                    <img src="imagenes/proyecto3.jpg" alt="Mueble metálico industrial para cocina" loading="lazy">
+                    <figcaption>Mueble metálico</figcaption>
+                </figure>
+                -->
+            </div>
+
+            <div class="cta-section">
+                <a href="contacto.html" class="cta-button" role="button">Pedí tu presupuesto sin cargo</a>
+            </div>
         </div>
     </main>
+
+    <!-- Menú lateral (igual que en tus otros archivos) -->
+    <div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
+    <nav class="side-nav" id="side-nav" aria-hidden="true">
+        <h2 style="color:#FF7B00;">Menú</h2>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="galeria.html">Galería</a>
+        <a href="contacto.html">Contacto</a>
+        <hr style="border-color: rgba(255,255,255,0.06); margin: 1rem 0;">
+        <div class="side-chat" id="side-chat-3">
+            <h3>Chat rápido</h3>
+            <ul class="messages" id="messages-3"></ul>
+            <form class="chat-form" data-formspree="https://formspree.io/f/meorjbgk">
+                <input type="text" name="message" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <a href="#" onclick="document.getElementById('side-nav').classList.remove('open');document.getElementById('side-overlay').classList.remove('open');return false;">Cerrar</a>
+    </nav>
+
+    <script>
+        (function(){
+            var btn = document.getElementById('hamburger');
+            var panel = document.getElementById('side-nav');
+            var overlay = document.getElementById('side-overlay');
+            function open(){
+                panel.classList.add('open');
+                overlay.classList.add('open');
+                btn.setAttribute('aria-expanded','true');
+                panel.setAttribute('aria-hidden','false');
+                overlay.setAttribute('aria-hidden','false');
+                var first = panel.querySelector('a');
+                if(first) first.focus();
+            }
+            function close(){
+                panel.classList.remove('open');
+                overlay.classList.remove('open');
+                btn.setAttribute('aria-expanded','false');
+                panel.setAttribute('aria-hidden','true');
+                overlay.setAttribute('aria-hidden','true');
+                btn.focus();
+            }
+            btn.addEventListener('click', function(){
+                if(panel.classList.contains('open')) close(); else open();
+            });
+            overlay.addEventListener('click', close);
+            document.addEventListener('keydown', function(e){
+                if(e.key === 'Escape') close();
+            });
+        })();
+    </script>
+
+    <script src="scripts/side_chat.js"></script>
+    <script src="scripts/side_nav_accessibility.js"></script>
+    <script src="scripts/side_nav_toggle.js"></script>
 
     <footer role="contentinfo">
         <p>&copy; 2025 Phoenix Welding. Todos los derechos reservados.</p>
@@ -51,86 +249,3 @@
 
 </body>
 </html>
-
-<!-- Side nav overlay and panel -->
-<div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
-<nav class="side-nav" id="side-nav" aria-hidden="true">
-    <h2 style="color:#FF7B00;">Menú</h2>
-    <a href="index.html">Inicio</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="galeria.html">Galería</a>
-    <a href="contacto.html">Contacto</a>
-    <hr style="border-color: rgba(255,255,255,0.06); margin: 1rem 0;">
-    <div class="side-chat" id="side-chat-4">
-        <h3>Chat rápido</h3>
-        <ul class="messages" id="messages-4"></ul>
-        <form class="chat-form" data-formspree="https://formspree.io/f/meorjbgk">
-            <input type="text" name="message" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-    <a href="#" onclick="document.getElementById('side-nav').classList.remove('open');document.getElementById('side-overlay').classList.remove('open');return false;">Cerrar</a>
-</nav>
-
-<script>
-    (function(){
-        var btn = document.getElementById('hamburger');
-        var panel = document.getElementById('side-nav');
-        var overlay = document.getElementById('side-overlay');
-        function open(){
-            panel.classList.add('open');
-            overlay.classList.add('open');
-            btn.setAttribute('aria-expanded','true');
-            panel.setAttribute('aria-hidden','false');
-            overlay.setAttribute('aria-hidden','false');
-            var first = panel.querySelector('a');
-            if(first) first.focus();
-        }
-        function close(){
-            panel.classList.remove('open');
-            overlay.classList.remove('open');
-            btn.setAttribute('aria-expanded','false');
-            panel.setAttribute('aria-hidden','true');
-            overlay.setAttribute('aria-hidden','true');
-            btn.focus();
-        }
-        btn.addEventListener('click', function(){
-            if(panel.classList.contains('open')) close(); else open();
-        });
-        overlay.addEventListener('click', close);
-        document.addEventListener('keydown', function(e){
-            if(e.key === 'Escape') close();
-        });
-    })();
-</script>
-
-<script>
-// Chat handler shared
-(function(){
-    function addMessage(list, text, cls){
-        var li = document.createElement('li');
-        li.textContent = text;
-        li.className = cls;
-        list.appendChild(li);
-        list.scrollTop = list.scrollHeight;
-    }
-    document.querySelectorAll('.chat-form').forEach(function(form){
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-            var input = form.querySelector('input[name="message"]');
-            if(!input || !input.value.trim()) return;
-            var text = input.value.trim();
-            var list = form.parentNode.querySelector('.messages');
-            addMessage(list, text, 'from-user');
-            input.value = '';
-            var endpoint = form.getAttribute('data-formspree');
-            if(endpoint){
-                fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }) })
-                .then(function(res){ if(res.ok) return res.json(); throw new Error('Network'); })
-                .then(function(){ addMessage(list, 'Mensaje enviado. Te responderemos pronto.', 'from-bot'); })
-                .catch(function(){ addMessage(list, 'No se pudo enviar. Intenta con WhatsApp o email.', 'from-bot'); });
-            } else { setTimeout(function(){ addMessage(list, 'Gracias. Nos contactaremos contigo pronto.', 'from-bot'); },700); }
-        }, false);
-    });
-})();
-</script>

@@ -569,6 +569,13 @@ form button:hover {
     color: #ccccff;
 }
 
+.contact-info {
+    margin-top: 2rem;
+    text-align: center;
+    color: #ccccff;
+}
+
+
 /* ========== PIE DE PÁGINA ========== */
 footer {
     background: rgba(10, 10, 31, 0.95);
