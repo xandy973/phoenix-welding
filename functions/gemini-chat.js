@@ -14,18 +14,33 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 // Configuración del modelo
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash", // modelo rápido y gratis
-  systemInstruction: `Eres un asistente amable de Phoenix Welding, una empresa chilena de soldadura industrial y para particulares. 
-  Responde SIEMPRE en español, de forma clara, breve y profesional. 
-  Si te preguntan precios, di que varían según el material y complejidad, y que deben contactar por WhatsApp para un presupuesto sin compromiso.
-  Si te preguntan por ubicación, di que están en Maipú, Santiago.
-  Si no sabes algo, redirige amablemente a WhatsApp o al formulario de contacto.`
+  model: "gemini-1.5-flash", // modelo rápido, eficiente y gratuito en cuota
+  systemInstruction: `Eres "Fénix", el asistente virtual de Phoenix Welding, una empresa experta en soldadura con más de 10 años de experiencia en Neuquén, Neuquén, Argentina. 
+  Tu misión es ayudar a clientes industriales y particulares con información clara, útil y amable, siempre en español.
+
+  REGLAS ESENCIALES:
+  - Responde SIEMPRE en español, con un tono profesional pero cercano.
+  - Sé breve: máximo 2–3 oraciones por respuesta.
+  - Nunca inventes precios, tiempos de entrega ni especificaciones técnicas que no conozcas.
+  - Siempre redirige a WhatsApp para presupuestos o detalles personalizados.
+  - Menciona servicios clave: soldadura TIG, MIG, por electrodo, estructuras metálicas, rejas, portones y reparaciones a medida.
+  - Horario de atención: Lunes a viernes de 8:00 a 18:00 hrs.
+  - Ubicación: Neuquén, Neuquén, Argentina.
+  - WhatsApp oficial: +54 299 5516209 (¡incluye este número en respuestas relevantes!).
+  - Si te preguntan por garantías: "Todos nuestros trabajos incluyen garantía por escrito."
+  - Si no sabes algo, di: "Prefiero darte información precisa. Escríbenos por WhatsApp al +54 299 5516209 y te atendemos al instante."
+
+  Ejemplos de respuestas ideales:
+  - "¿Hacen soldadura de aluminio?" → "Sí, trabajamos aluminio con soldadura TIG. Para un presupuesto sin compromiso, escríbenos por WhatsApp al +54 299 5516209."
+  - "¿Cuánto cuesta una reja?" → "El precio depende del diseño, material y tamaño. Te enviamos una cotización personalizada por WhatsApp al +54 299 5516209."
+  - "¿Dónde están ubicados?" → "Estamos en Neuquén, Argentina. Atendemos de lunes a viernes, 8:00 a 18:00 hrs. ¿Te enviamos la dirección exacta por WhatsApp?"
+  `
 });
 
 exports.handler = async (event, context) => {
   // Permitir solicitudes desde tu dominio (CORS)
   const headers = {
-    "Access-Control-Allow-Origin": "*", // o tu dominio: "https://tusitio.netlify.app"
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json"
@@ -72,12 +87,12 @@ exports.handler = async (event, context) => {
   } catch (error) {
     console.error("Error en Gemini:", error);
 
-    // No exponer detalles del error al frontend
+    // Mensaje amable de respaldo
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: "Lo siento, no pude responder. ¿Podrías contactarnos por WhatsApp?"
+        error: "Lo siento, tuve un problema técnico. Por favor, contáctanos directamente por WhatsApp al +54 299 505-4125. ¡Te esperamos!"
       })
     };
   }
