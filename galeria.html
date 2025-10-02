@@ -6,6 +6,82 @@
     <title>Galería de Proyectos - Phoenix Welding</title>
     <meta name="description" content="Mira nuestra galería de proyectos recientes: soldadura industrial, estructuras metálicas, reparaciones y trabajos personalizados con acabados impecables.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            color: white;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery-header h1 {
+            color: #FF7B00;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #ccccff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .gallery-item figcaption {
+            padding: 1rem;
+            font-size: 1.05rem;
+            color: #f0f0f0;
+            text-align: center;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .gallery-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,29 +96,66 @@
                 <img src="imagenes/logofenix.png" alt="Logo de Phoenix Welding" width="150" height="60">
             </a>
         </div>
-        <!-- navegación principal movida a la barra lateral -->
     </header>
 
     <main>
-        <h1>Nuestros Proyectos Recientes</h1>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #ccccff;">
-            Cada proyecto es una obra de precisión. Aquí te mostramos algunos de nuestros trabajos más recientes, donde calidad y detalle van de la mano.
-        </p>
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h1>Nuestros Proyectos Recientes</h1>
+                <p>Cada proyecto es una obra de precisión. Aquí te mostramos algunos de nuestros trabajos más recientes, donde calidad y detalle van de la mano.</p>
+            </div>
 
-        <div class="full-gallery">
-            <img src="imagenes/proyecto1.jpg" alt="Estructura metálica soldada para planta industrial" width="400" height="300" loading="lazy">
-            <img src="imagenes/proyecto2.jpg" alt="Reparación y refuerzo de portón de hierro forjado" width="400" height="300" loading="lazy">
-            <img src="imagenes/proyecto3.jpg" alt="Fabricación de marquesina metálica a medida" width="400" height="300" loading="lazy">
-            <!-- <img src="imagenes/proyecto4.jpg" alt="Soldadura TIG en acero inoxidable para barra de cocina industrial" width="400" height="300" loading="lazy"> --!>
-          <!--  <img src="imagenes/proyecto5.jpg" alt="Diseño y soldadura de estantería metálica personalizada para cliente particular" width="400" height="300" loading="lazy"> --!>
-        </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto1.jpg" alt="Estructura metálica soldada para planta industrial" loading="lazy">
+                    <figcaption>Estructura industrial</figcaption>
+                </figure>
 
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="contacto.html" class="cta-button" role="button">¿Quieres un proyecto como estos? ¡Contáctanos!</a>
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto2.jpg" alt="Columna y Canasto Para Torre De Iluminacion<" loading="lazy">
+                    <figcaption>Columna y Canasto Para Torre De Iluminacion</figcaption>
+                </figure>
+
+                
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto3.jpg" alt=" Skyd Para Cañeria De Alta Precion" loading="lazy">
+                    <figcaption>Skyd Para Cañeria De Alta Precion</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto4.jpg" alt="Gabinete Para Bomba y Tanque De Agua" loading="lazy">
+                    <figcaption>Gabinete Para Bomba y Tanque De Agua"</figcaption>
+                </figure>
+
+                 <figure class="gallery-item">
+                    <img src="imagenes/NegroSoldando.jpg" alt="EL Negro Soldando" loading="lazy">
+                    <figcaption>Soldadura Perfil Correa "C"</figcaption>
+                </figure> 
+                
+				<figure class="gallery-item">
+                    <img src="imagenes/Soldadurax.jpg" alt="Soldadurax" loading="lazy">
+                    <figcaption>Soldadura perfil correa tipo "C" x 160 mm con electrodo común 6013 x 2.5 mm</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/ElNegroSape.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption>Vinculacion Correas Tipo "C" Para Viga Central De Techo</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/NegroLimpio.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Soldadura Tipo Paso Peregrino</figcaption>
+                </figure> 
+				
+            </div>
+
+            <div class="cta-section">
+                <a href="contacto.html" class="cta-button" role="button">¿Quieres un proyecto como estos? ¡Contáctanos!</a>
+            </div>
         </div>
     </main>
 
-    <!-- Side nav overlay and panel -->
+    <!-- Side nav -->
     <div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
     <nav class="side-nav" id="side-nav" aria-hidden="true">
         <h2 style="color:#FF7B00;">Menú</h2>
@@ -73,7 +186,6 @@
                 btn.setAttribute('aria-expanded','true');
                 panel.setAttribute('aria-hidden','false');
                 overlay.setAttribute('aria-hidden','false');
-                // trap focus simple: focus first link
                 var first = panel.querySelector('a');
                 if(first) first.focus();
             }

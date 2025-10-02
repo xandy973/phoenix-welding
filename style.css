@@ -26,7 +26,7 @@ header {
     -webkit-backdrop-filter: blur(8px);
     padding: 1.2rem 2rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Alinea contenido a la izquierda */
     align-items: center;
     position: sticky;
     top: 0;
@@ -34,22 +34,16 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Contenedor para hamburguesa + logo (siempre en fila en escritorio) */
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .logo img {
     height: 60px;
     transition: transform 0.3s ease;
-}
-
-/* Force the logo to appear below the hamburger in small screens and stay aligned */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.header-left {
-    display: flex;
-    flex-direction: column; /* hamburger above, logo below */
-    align-items: flex-start;
-    gap: 0.25rem;
 }
 
 .logo img:hover {
@@ -87,6 +81,250 @@ nav a::after {
 nav a:hover::after {
     width: 80%;
 }
+
+/* ========== BOTÓN HAMBURGUESA ========== */
+.hamburger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    padding: 0;
+    margin-right: 1rem;
+    z-index: 101;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+/* Botón hamburguesa: visible en todas las pantallas */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 1rem;
+    z-index: 101;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #ffffff; /* o el color que quieras */
+    border-radius: 2px;
+}
+
+/* ========== RESPONSIVE: MÓVILES ========== */
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 1rem;
+        /* Mantener en fila, no en columna */
+        flex-direction: row;
+        justify-content: flex-start; /* ¡Clave! Alinea a la izquierda */
+        align-items: center;
+        gap: 0;
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo img {
+        height: 48px;
+    }
+}
+
+/* ========== BARRA LATERAL (menú desplegable) ========== */
+.side-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 95;
+}
+
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10,10,31,0.78), rgba(15,15,50,0.78));
+    box-shadow: 4px 0 28px rgba(0,0,0,0.6);
+    padding: 2rem 1.2rem;
+    transition: left 0.28s cubic-bezier(.2,.9,.3,1);
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.side-nav.open {
+    left: 0;
+}
+
+.side-nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.8rem 0.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.side-nav a:hover {
+    background: rgba(255,123,0,0.08);
+    color: #FFB07A;
+}
+
+/* ========== PESTAÑAS VERTICALES EN SIDE-NAV ========== */
+.side-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+.side-tab {
+    display: block;
+    padding: 0.75rem 0.8rem;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+.side-tab:hover {
+    background: rgba(255,123,0,0.08);
+    color: #FFB07A;
+    transform: translateX(3px);
+}
+.side-tab[aria-selected="true"] {
+    background: linear-gradient(90deg, rgba(255,123,0,0.14), rgba(255,123,0,0.08));
+    color: #FFF7EE;
+    box-shadow: inset 3px 0 0 rgba(255,123,0,0.18);
+}
+.side-tab:focus {
+    outline: 3px solid rgba(255,123,0,0.26);
+    outline-offset: 2px;
+}
+
+/* ========== CHAT EN MENÚ LATERAL ========== */
+.side-chat {
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.03);
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.side-chat h3 {
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.side-chat .messages {
+    list-style: none;
+    max-height: 180px;
+    overflow-y: auto;
+    margin: 0 0 0.5rem 0;
+    padding: 0.3rem;
+}
+
+.side-chat .messages li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.side-chat .messages li.from-user { text-align: right; color: #ffd7b3; }
+.side-chat .messages li.from-bot { text-align: left; color: #cfe8ff; }
+
+.side-chat .chat-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.side-chat .chat-form input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(10,10,20,0.45);
+    color: #fff;
+}
+
+.side-chat .chat-form button {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    background: #FF7B00;
+    color: #fff;
+    cursor: pointer;
+}
+
+.side-chat .msg-wrap { 
+    display: inline-block; 
+    max-width: 86%; 
+    padding: .5rem .75rem; 
+    border-radius: 10px; 
+}
+.side-chat .from-user .msg-wrap { 
+    background: linear-gradient(90deg, rgba(255,183,120,0.12), rgba(255,183,120,0.08)); 
+    color:#ffd7b3; 
+    border:1px solid rgba(255,140,40,0.12); 
+}
+.side-chat .from-bot .msg-wrap { 
+    background: rgba(12,18,32,0.6); 
+    color:#cfe8ff; 
+    border:1px solid rgba(255,255,255,0.04); 
+}
+.side-chat .msg-ts { 
+    display:block; 
+    font-size: .7rem; 
+    color: #9aa4d6; 
+    margin-top: .25rem 
+}
+.side-chat .typing-dots span{ 
+    display:inline-block; 
+    width:6px; 
+    height:6px; 
+    background:#cfe8ff; 
+    border-radius:50%; 
+    margin-right:4px; 
+    opacity:.6; 
+    animation: blink 1s infinite; 
+}
+@keyframes blink{ 
+    0%,100%{ opacity:.2 } 
+    50%{ opacity:1 
+}}
+
+
+/* ========== ESTILOS RESTANTES (sin cambios) ========== */
+/* ... (todo lo demás de tu CSS sigue igual) ... */
 
 /* ========== CONTENIDO PRINCIPAL ========== */
 main {
@@ -206,7 +444,6 @@ h2::after {
     color: #FF7B00;
 }
 
-/* En style.css */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -219,7 +456,6 @@ main > * {
 main > *:nth-child(2) { animation-delay: 0.2s; }
 main > *:nth-child(3) { animation-delay: 0.4s; }
 main > *:nth-child(4) { animation-delay: 0.6s; }
-
 
 /* ========== GALERÍA ========== */
 .gallery-preview {
@@ -247,11 +483,10 @@ main > *:nth-child(4) { animation-delay: 0.6s; }
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* ========== GALERÍA (estilos más ordenados para full-gallery) ========== */
 .full-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px; /* separación entre imágenes */
+    gap: 16px;
     align-items: start;
     margin-top: 1.5rem;
 }
@@ -269,193 +504,6 @@ main > *:nth-child(4) { animation-delay: 0.6s; }
 
 .full-gallery img:hover {
     transform: translateY(-6px) scale(1.02);
-}
-
-/* ========== BARRA LATERAL (hamburguesa) ========== */
-.hamburger {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.4rem;
-    margin-right: 1rem;
-}
-
-.hamburger .bar {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #ffffff;
-    margin: 4px 0;
-    transition: all 0.25s ease;
-}
-
-/* Ensure hamburger stacks bars vertically */
-.hamburger {
-    flex-direction: column;
-}
-
-.side-nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-    z-index: 95;
-}
-
-.side-nav {
-    position: fixed;
-    top: 0;
-    left: -320px; /* oculto por defecto */
-    width: 300px;
-    height: 100%;
-    /* más transparente para dejar ver el fondo */
-    background: linear-gradient(180deg, rgba(10,10,31,0.78), rgba(15,15,50,0.78));
-    box-shadow: 4px 0 28px rgba(0,0,0,0.6);
-    padding: 2rem 1.2rem;
-    transition: left 0.28s cubic-bezier(.2,.9,.3,1);
-    z-index: 100;
-    overflow-y: auto;
-}
-
-.side-nav.open {
-    left: 0;
-}
-
-.side-nav-overlay.open {
-    opacity: 1;
-    visibility: visible;
-}
-
-.side-nav a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.8rem 0.4rem;
-    border-radius: 6px;
-    font-weight: 600;
-}
-
-.side-nav a:hover {
-    background: rgba(255,123,0,0.08);
-    color: #FFB07A;
-}
-
-/* Chat widget inside side-nav */
-.side-chat {
-    margin-top: 1rem;
-    background: rgba(255,255,255,0.03);
-    padding: 0.8rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.04);
-}
-
-/* ========== PESTAÑAS VERTICALES EN SIDE-NAV ========== */
-.side-tabs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 0.6rem;
-}
-.side-tab {
-    display: block;
-    padding: 0.75rem 0.8rem;
-    border-radius: 8px;
-    background: transparent;
-    color: #fff;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
-}
-.side-tab:hover {
-    background: rgba(255,123,0,0.08);
-    color: #FFB07A;
-    transform: translateX(3px);
-}
-.side-tab[aria-selected="true"] {
-    background: linear-gradient(90deg, rgba(255,123,0,0.14), rgba(255,123,0,0.08));
-    color: #FFF7EE;
-    box-shadow: inset 3px 0 0 rgba(255,123,0,0.18);
-}
-.side-tab:focus {
-    outline: 3px solid rgba(255,123,0,0.26);
-    outline-offset: 2px;
-}
-
-/* Focus styles for accessibility */
-.side-nav a:focus, .side-chat .chat-form input:focus, .side-chat .chat-form button:focus, .hamburger:focus {
-    outline: 3px solid rgba(255,123,0,0.22);
-    outline-offset: 2px;
-}
-
-/* Responsive: ensure header stacks correctly on small screens */
-@media (max-width: 720px) {
-    header { padding: 0.8rem 1rem; }
-    .header-left { flex-direction: column; align-items: flex-start; }
-    .logo img { height: 48px; }
-}
-
-.side-chat h3 {
-    margin: 0 0 0.5rem 0;
-    color: #fff;
-    font-size: 1rem;
-}
-
-.side-chat .messages {
-    list-style: none;
-    max-height: 180px;
-    overflow-y: auto;
-    margin: 0 0 0.5rem 0;
-    padding: 0.3rem;
-}
-
-.side-chat .messages li {
-    margin-bottom: 0.4rem;
-    font-size: 0.95rem;
-}
-
-.side-chat .messages li.from-user { text-align: right; color: #ffd7b3; }
-.side-chat .messages li.from-bot { text-align: left; color: #cfe8ff; }
-
-.side-chat .chat-form {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.side-chat .chat-form input[type="text"] {
-    flex: 1;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(10,10,20,0.45);
-    color: #fff;
-}
-
-.side-chat .chat-form button {
-    padding: 0.5rem 0.8rem;
-    border-radius: 6px;
-    border: none;
-    background: #FF7B00;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* Chat bubble styling */
-.side-chat .messages li { margin-bottom: .5rem; }
-.side-chat .msg-wrap { display: inline-block; max-width: 86%; padding: .5rem .75rem; border-radius: 10px; }
-.side-chat .from-user .msg-wrap { background: linear-gradient(90deg, rgba(255,183,120,0.12), rgba(255,183,120,0.08)); color:#ffd7b3; border:1px solid rgba(255,140,40,0.12); }
-.side-chat .from-bot .msg-wrap { background: rgba(12,18,32,0.6); color:#cfe8ff; border:1px solid rgba(255,255,255,0.04); }
-.side-chat .msg-ts { display:block; font-size: .7rem; color: #9aa4d6; margin-top: .25rem }
-.side-chat .typing-dots span{ display:inline-block; width:6px; height:6px; background:#cfe8ff; border-radius:50%; margin-right:4px; opacity:.6; animation: blink 1s infinite; }
-@keyframes blink{ 0%,100%{ opacity:.2 } 50%{ opacity:1 }}
-
-/* cuando el menú está abierto, hacer que el header tenga z-index mayor */
-header {
-    z-index: 110;
 }
 
 /* ========== FORMULARIO DE CONTACTO ========== */
@@ -521,6 +569,13 @@ form button:hover {
     color: #ccccff;
 }
 
+.contact-info {
+    margin-top: 2rem;
+    text-align: center;
+    color: #ccccff;
+}
+
+
 /* ========== PIE DE PÁGINA ========== */
 footer {
     background: rgba(10, 10, 31, 0.95);
@@ -543,40 +598,7 @@ footer {
     color: #FF7B00;
 }
 
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-    }
-
-    nav a {
-        margin: 0.5rem 0.8rem;
-    }
-
-    .hero-section {
-        padding: 3rem 1.5rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-    }
-
-    .service-card,
-    form {
-        padding: 1.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* ========== RESPONSIVE ADICIONAL ========== */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.8rem;
