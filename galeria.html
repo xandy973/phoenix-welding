@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Proyectos - Phoenix Welding</title>
+    <meta name="description" content="Mira nuestra galería de proyectos recientes: soldadura industrial, estructuras metálicas, reparaciones y trabajos personalizados con acabados impecables.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            color: white;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery-header h1 {
+            color: #FF7B00;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #ccccff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .gallery-item figcaption {
+            padding: 1rem;
+            font-size: 1.05rem;
+            color: #f0f0f0;
+            text-align: center;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .gallery-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header role="banner">
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="side-nav" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <div class="logo">
+            <a href="index.html" aria-label="Ir a la página de inicio">
+                <img src="imagenes/logofenix.png" alt="Logo de Phoenix Welding" width="150" height="60">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h1>Nuestros Proyectos Recientes</h1>
+                <p>Cada proyecto es una obra de precisión. Aquí te mostramos algunos de nuestros trabajos más recientes, donde calidad y detalle van de la mano.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto1.jpg" alt="Estructura metálica soldada para planta industrial" loading="lazy">
+                    <figcaption>Estructura industrial</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto2.jpg" alt="Columna y Canasto Para Torre De Iluminacion<" loading="lazy">
+                    <figcaption>Columna y Canasto Para Torre De Iluminacion</figcaption>
+                </figure>
+
+                
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto3.jpg" alt=" Skyd Para Cañeria De Alta Precion" loading="lazy">
+                    <figcaption>Skyd Para Cañeria De Alta Precion</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imagenes/proyecto4.jpg" alt="Gabinete Para Bomba y Tanque De Agua" loading="lazy">
+                    <figcaption>Gabinete Para Bomba y Tanque De Agua"</figcaption>
+                </figure>
+
+                 <figure class="gallery-item">
+                    <img src="imagenes/NegroSoldando.jpg" alt="EL Negro Soldando" loading="lazy">
+                    <figcaption>Soldadura Perfil Correa "C"</figcaption>
+                </figure> 
+                
+				<figure class="gallery-item">
+                    <img src="imagenes/Soldadurax.jpg" alt="Soldadurax" loading="lazy">
+                    <figcaption>Soldadura perfil correa tipo "C" x 160 mm con electrodo común 6013 x 2.5 mm</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/ElNegroSape.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption>Vinculacion Correas Tipo "C" Para Viga Central De Techo</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/NegroLimpio.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Soldadura Tipo Paso Peregrino</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/NegroSoldando1.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Soldadura Perfil Correa Tipo C Para Montaje De Chapas</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/Rejas.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Restauración, Soldadura, Pintura Y Montaje De Reja Para Paredon Exterior</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/Correas TipoC.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Colocación De Correas Tipo C Sobre Vigas conformadas</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/Correastipoc.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption> Colocación De Correas Tipo C Sobre Vigas conformadas</figcaption>
+                </figure> 
+				
+				<figure class="gallery-item">
+                    <img src="imagenes/MontajeDeViga.jpg" alt="El Negroo" loading="lazy">
+                    <figcaption>Montaje Viga Central Conformada De Correa Tipo C De 160mm</figcaption>
+                </figure> 
+				
+				
+            </div>
+
+            <div class="cta-section">
+                <a href="contacto.html" class="cta-button" role="button">¿Quieres un proyecto como estos? ¡Contáctanos!</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side nav -->
+    <div class="side-nav-overlay" id="side-overlay" tabindex="-1" aria-hidden="true"></div>
+    <nav class="side-nav" id="side-nav" aria-hidden="true">
+        <h2 style="color:#FF7B00;">Menú</h2>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="galeria.html">Galería</a>
+        <a href="contacto.html">Contacto</a>
+        <hr style="border-color: rgba(255,255,255,0.06); margin: 1rem 0;">
+        <div class="side-chat" id="side-chat-2">
+            <h3>Chat rápido</h3>
+            <ul class="messages" id="messages-2"></ul>
+            <form class="chat-form" data-formspree="https://formspree.io/f/meorjbgk">
+                <input type="text" name="message" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <a href="#" onclick="document.getElementById('side-nav').classList.remove('open');document.getElementById('side-overlay').classList.remove('open');return false;">Cerrar</a>
+    </nav>
+
+    <script>
+        (function(){
+            var btn = document.getElementById('hamburger');
+            var panel = document.getElementById('side-nav');
+            var overlay = document.getElementById('side-overlay');
+            function open(){
+                panel.classList.add('open');
+                overlay.classList.add('open');
+                btn.setAttribute('aria-expanded','true');
+                panel.setAttribute('aria-hidden','false');
+                overlay.setAttribute('aria-hidden','false');
+                var first = panel.querySelector('a');
+                if(first) first.focus();
+            }
+            function close(){
+                panel.classList.remove('open');
+                overlay.classList.remove('open');
+                btn.setAttribute('aria-expanded','false');
+                panel.setAttribute('aria-hidden','true');
+                overlay.setAttribute('aria-hidden','true');
+                btn.focus();
+            }
+            btn.addEventListener('click', function(){
+                if(panel.classList.contains('open')) close(); else open();
+            });
+            overlay.addEventListener('click', close);
+            document.addEventListener('keydown', function(e){
+                if(e.key === 'Escape') close();
+            });
+        })();
+    </script>
+
+    <script src="scripts/side_chat.js"></script>
+    <script src="scripts/side_nav_accessibility.js"></script>
+    <script src="scripts/side_nav_toggle.js"></script>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Phoenix Welding. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Visita nuestro Facebook">Facebook</a>
+            <a href="#" aria-label="Contáctanos por WhatsApp">WhatsApp</a>
+        </div>
+    </footer>
+
+</body>
+</html>
